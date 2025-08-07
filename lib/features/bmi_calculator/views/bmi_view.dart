@@ -183,7 +183,6 @@ class _GenderCard extends StatelessWidget {
   final VoidCallback onTap;
 
   const _GenderCard({
-    super.key,
     required this.gender,
     required this.isSelected,
     required this.onTap,
@@ -198,7 +197,7 @@ class _GenderCard extends StatelessWidget {
     // Questo garantisce che si adatti automaticamente al tema (light/dark)
     final cardColor = isSelected
         ? colorScheme.primaryContainer // Colore evidente quando selezionato
-        : colorScheme.surfaceVariant.withOpacity(0.5);
+        : colorScheme.surfaceContainerHighest.withOpacity(0.5);
 
     final contentColor = isSelected
         ? colorScheme.onPrimaryContainer
@@ -259,7 +258,6 @@ class _InputCard extends StatelessWidget {
   final ValueChanged<double> onChanged;
 
   const _InputCard({
-    super.key,
     required this.title,
     required this.unit,
     required this.icon,
@@ -275,7 +273,7 @@ class _InputCard extends StatelessWidget {
     return Card(
       elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      color: theme.colorScheme.surfaceVariant.withOpacity(0.5),
+      color: theme.colorScheme.surfaceContainerHighest.withOpacity(0.5),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -324,9 +322,7 @@ class _FormulaSelector extends StatelessWidget {
   final ValueChanged<BmiFormula> onSelectionChanged;
 
   const _FormulaSelector(
-      {super.key,
-      required this.selectedFormula,
-      required this.onSelectionChanged});
+      {required this.selectedFormula, required this.onSelectionChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -368,8 +364,7 @@ class _CalculateButton extends StatelessWidget {
   final ColorScheme colorScheme;
 
   const _CalculateButton(
-      {super.key,
-      required this.isLoading,
+      {required this.isLoading,
       required this.onPressed,
       required this.colorScheme});
 
@@ -461,7 +456,7 @@ class _BmiMeter extends StatelessWidget {
   final double minBmi = 15.0;
   final double maxBmi = 35.0;
 
-  const _BmiMeter({super.key, required this.bmiValue});
+  const _BmiMeter({required this.bmiValue});
 
   @override
   Widget build(BuildContext context) {
@@ -552,7 +547,10 @@ class _PlaceholderCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 0,
-      color: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.3),
+      color: Theme.of(context)
+          .colorScheme
+          .surfaceContainerHighest
+          .withOpacity(0.3),
       child: const Padding(
         padding: EdgeInsets.all(48.0),
         child: Text(

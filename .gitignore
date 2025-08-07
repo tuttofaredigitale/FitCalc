@@ -2,6 +2,8 @@
 **/build/
 !src/**/build/
 
+./android/key.properties
+
 # Ignore Gradle GUI config
 gradle-app.setting
 
@@ -19,3 +21,44 @@ gradle-app.setting
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+.dart_tool/chrome-device/Default/BrowsingTopicsState
+
+.dart_tool/chrome-device/Default/DIPS-wal
+.dart_tool/chrome-device/Default/discount_infos_db/LOG.old
+.dart_tool/chrome-device/Default/Extension State/LOG
+.dart_tool/chrome-device/Default/Extension State/LOG.old
+.dart_tool/chrome-device/Default/Favicons
+.dart_tool/chrome-device/Default/GCM Store/000003.log
+.dart_tool/chrome-device/Default/GCM Store/Encryption/LOG
+.dart_tool/chrome-device/Default/GCM Store/Encryption/LOG.old
+.dart_tool/chrome-device/Default/GCM Store/LOG
+.dart_tool/chrome-device/Default/History
+.dart_tool/chrome-device/Default/History-journal
+.dart_tool/chrome-device/Default/Local Storage/leveldb/LOG
+.dart_tool/chrome-device/Default/Local Storage/leveldb/LOG.old
+.dart_tool/chrome-device/Default/Preferences
+.dart_tool/chrome-device/Default/Service Worker/Database/000003.log
+.dart_tool/chrome-device/Default/Service Worker/Database/LOG
+.dart_tool/chrome-device/Default/Service Worker/Database/LOG.old
+.dart_tool/chrome-device/Default/Service Worker/ScriptCache/08b99d499107ba17_0
+.dart_tool/chrome-device/Default/Service Worker/ScriptCache/index-dir/the-real-index
+.dart_tool/chrome-device/Default/Session Storage/000003.log
+.dart_tool/chrome-device/Default/Session Storage/LOG
+.dart_tool/chrome-device/Default/Session Storage/LOG.old
+.dart_tool/chrome-device/Default/Sessions/Session_13399030475189053
+.dart_tool/chrome-device/Default/Sessions/Tabs_13399030475314675
+.dart_tool/chrome-device/Default/Shared Dictionary/cache/index-dir/the-real-index
+.dart_tool/chrome-device/Default/shared_proto_db/000004.log
+.dart_tool/chrome-device/Default/shared_proto_db/LOG
+.dart_tool/chrome-device/Default/shared_proto_db/LOG.old
+.dart_tool/chrome-device/Default/shared_proto_db/metadata/000003.log
+.dart_tool/chrome-device/Default/shared_proto_db/metadata/LOG
+.dart_tool/chrome-device/Default/shared_proto_db/metadata/LOG.old
+.dart_tool/chrome-device/Default/Site Characteristics Database/000003.log
+.dart_tool/chrome-device/Default/Site Characteristics Database/LOG
+.dart_tool/chrome-device/Default/Site Characteristics Database/LOG.old
+.dart_tool/chrome-device/Default/Sync Data/LevelDB/LOG
+.dart_tool/chrome-device/Default/Sync Data/LevelDB/LOG.old
+.dart_tool/chrome-device/Default/Web Data
+.dart_tool/chrome-device/Default/WebStorage/QuotaManager
+.dart_tool/chrome-device/Default/WebStorage/QuotaManager-journal

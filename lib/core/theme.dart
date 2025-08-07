@@ -51,7 +51,7 @@ class AppTheme {
         textStyle: WidgetStateProperty.resolveWith<TextStyle?>(
           (states) => const TextStyle(fontWeight: FontWeight.w500),
         ),
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        shape: WidgetStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12.0),
           ),

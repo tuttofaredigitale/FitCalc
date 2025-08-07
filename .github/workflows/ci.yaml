@@ -28,7 +28,6 @@ jobs:
         uses: flutter-actions/setup-flutter@v4
         with:
           channel: stable
-          version: 3.22.2
           cache: true
 
       - run: flutter pub get

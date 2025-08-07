@@ -1,1 +1,0 @@
- E:\\tuttofaredigitale\\Corso-Flutter-Dart-Aggiornamento-082025\\FitCalc\\.dart_tool\\flutter_build\\d9307cc93532414b2e525919c1800c18\\native_assets.json: 

@@ -39,26 +39,31 @@ class BmiService {
 
   // Metodi privati per la classificazione
   static BmiResult _getClassicBmiClassification(double bmi) {
-    if (bmi < 18.5)
+    if (bmi < 18.5) {
       return BmiResult(
           value: bmi, classification: "Sottopeso", color: Colors.blue);
-    if (bmi < 25)
+    }
+    if (bmi < 25) {
       return BmiResult(
           value: bmi, classification: "Normopeso", color: Colors.green);
-    if (bmi < 30)
+    }
+    if (bmi < 30) {
       return BmiResult(
           value: bmi, classification: "Sovrappeso", color: Colors.orange);
+    }
     return BmiResult(value: bmi, classification: "Obesità", color: Colors.red);
   }
 
   static BmiResult _getPonderalClassification(double pi) {
     // Classificazione indicativa per l'indice ponderale
-    if (pi < 11)
+    if (pi < 11) {
       return BmiResult(
           value: pi, classification: "Sottopeso", color: Colors.blue);
-    if (pi <= 15)
+    }
+    if (pi <= 15) {
       return BmiResult(
           value: pi, classification: "Normopeso", color: Colors.green);
+    }
     return BmiResult(
         value: pi, classification: "Sovrappeso", color: Colors.orange);
   }
