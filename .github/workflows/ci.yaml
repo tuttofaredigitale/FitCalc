@@ -27,10 +27,10 @@ jobs:
           java-version: "17"
 
       - name: Setup Flutter
-        uses: actions/setup-flutter@v3
+        uses: actions/setup-flutter@v5
         with:
           channel: "stable"
-          flutter-version: "3.22.x"
+          flutter-version: "3.x"
           cache: true
 
       - name: Install dependencies
