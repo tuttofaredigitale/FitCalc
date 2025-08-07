@@ -36,7 +36,7 @@ jobs:
 
       - name: Build Android App Bundle
         if: matrix.os == 'ubuntu-latest'
-        run: flutter build appbundle --obfuscate --split-debug-info=build/symbols --no-codesign # Questo permetterà alla build di completarsi producendo un AAB non firmato
+        run: flutter build appbundle --obfuscate --split-debug-info=build/symbols
 
       - name: Upload symbol map
         if: matrix.os == 'ubuntu-latest'

@@ -51,8 +51,17 @@ android {
 
     buildTypes {
         getByName("release") {
+        // Se NON hai key.properties, riutilizza la config debug
+        if (!keyPropertiesFile.exists()) {
+            println("⚠️  key.properties non trovato: uso debug keystore")
+            initWith(signingConfigs.getByName("debug"))
+            signingConfig = signingConfigs.getByName("debug")
+        } else {
             signingConfig = signingConfigs.getByName("release")
         }
+        isMinifyEnabled = true          
+        isShrinkResources = true
+    }
     }
 }
 
