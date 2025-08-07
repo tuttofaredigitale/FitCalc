@@ -30,7 +30,7 @@ jobs:
         uses: flutter-actions/setup-flutter@v2
         with:
           channel: "stable"
-          flutter-version: "3.x"
+          version: "3.x"
           cache: true
 
       - name: Install dependencies
