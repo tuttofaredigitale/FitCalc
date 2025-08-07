@@ -1,4 +1,4 @@
-import 'dart:ui';
+// import 'dart:ui';
 import 'package:fitcalc/core/models/bmi_formula.dart';
 import 'package:fitcalc/core/models/bmi_result.dart';
 import 'package:fitcalc/core/models/gender.dart';
@@ -15,7 +15,6 @@ class BmiView extends ConsumerStatefulWidget {
 }
 
 class _BmiViewState extends ConsumerState<BmiView> {
-  // NUOVO: Aggiungiamo lo stato per il sesso, impostando un default
   Gender _selectedGender = Gender.male;
 
   double _currentHeight = 170.0;
@@ -25,14 +24,11 @@ class _BmiViewState extends ConsumerState<BmiView> {
   void _calculate() {
     HapticFeedback.mediumImpact();
 
-    // AGGIORNAMENTO: Passiamo anche il sesso al provider
-    // NOTA: Assicurati che il tuo provider sia aggiornato per accettare 'gender'.
-    // Se non lo è ancora, puoi commentare la riga 'gender:'.
     ref.read(bmiProvider.notifier).calculateBmi(
           formula: _selectedFormula,
           weight: _currentWeight,
           height: _currentHeight,
-          gender: _selectedGender, // Passiamo il valore
+          gender: _selectedGender,
         );
   }
 
@@ -54,7 +50,7 @@ class _BmiViewState extends ConsumerState<BmiView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // --- NUOVA SEZIONE: Selezione Sesso ---
+              // Selezione Sesso
               Row(
                 children: [
                   Expanded(
@@ -83,7 +79,7 @@ class _BmiViewState extends ConsumerState<BmiView> {
 
               const SizedBox(height: 16),
 
-              // --- Sezione Input (Slider) ---
+              // Sezione Input
               Row(
                 children: [
                   Expanded(
@@ -121,7 +117,7 @@ class _BmiViewState extends ConsumerState<BmiView> {
               ),
               const SizedBox(height: 24),
 
-              // --- Sezione Formula ---
+              // Sezione Formula
               _FormulaSelector(
                 selectedFormula: _selectedFormula,
                 onSelectionChanged: (formula) {
@@ -134,7 +130,7 @@ class _BmiViewState extends ConsumerState<BmiView> {
 
               const SizedBox(height: 32),
 
-              // --- Bottone Calcola ---
+              // Bottone Calcola
               _CalculateButton(
                 isLoading: bmiState.isLoading,
                 onPressed: _calculate,
@@ -143,7 +139,7 @@ class _BmiViewState extends ConsumerState<BmiView> {
 
               const SizedBox(height: 24),
 
-              // --- Sezione Risultato (Animata) ---
+              // Sezione Risultato
               AnimatedSwitcher(
                 duration: const Duration(milliseconds: 500),
                 transitionBuilder: (Widget child, Animation<double> animation) {
@@ -172,11 +168,6 @@ class _BmiViewState extends ConsumerState<BmiView> {
   }
 }
 
-// ===================================================================
-// WIDGET ESTRATTI E MIGLIORATI
-// ===================================================================
-
-// --- NUOVO WIDGET: Card Interattiva per il Sesso ---
 class _GenderCard extends StatelessWidget {
   final Gender gender;
   final bool isSelected;
@@ -193,11 +184,9 @@ class _GenderCard extends StatelessWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
-    // Definiamo i colori in base allo stato (selezionato o meno) utilizzando Material 3
-    // Questo garantisce che si adatti automaticamente al tema (light/dark)
     final cardColor = isSelected
         ? colorScheme.primaryContainer // Colore evidente quando selezionato
-        : colorScheme.surfaceContainerHighest.withOpacity(0.5);
+        : colorScheme.surfaceContainerHighest.withValues(alpha: 0.5);
 
     final contentColor = isSelected
         ? colorScheme.onPrimaryContainer
@@ -246,8 +235,6 @@ class _GenderCard extends StatelessWidget {
   }
 }
 
-// --- WIDGET PER L'INPUT CON SLIDER ---
-// (Nessuna modifica necessaria qui)
 class _InputCard extends StatelessWidget {
   final String title;
   final String unit;
@@ -273,7 +260,7 @@ class _InputCard extends StatelessWidget {
     return Card(
       elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      color: theme.colorScheme.surfaceContainerHighest.withOpacity(0.5),
+      color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -315,8 +302,6 @@ class _InputCard extends StatelessWidget {
   }
 }
 
-// --- WIDGET PER LA SELEZIONE DELLA FORMULA ---
-// (Nessuna modifica necessaria qui, utilizza l'enum BmiFormula fornito)
 class _FormulaSelector extends StatelessWidget {
   final BmiFormula selectedFormula;
   final ValueChanged<BmiFormula> onSelectionChanged;
@@ -356,8 +341,6 @@ class _FormulaSelector extends StatelessWidget {
   }
 }
 
-// --- WIDGET PER IL BOTTONE DI CALCOLO ---
-// (Nessuna modifica necessaria qui)
 class _CalculateButton extends StatelessWidget {
   final bool isLoading;
   final VoidCallback onPressed;
@@ -393,8 +376,6 @@ class _CalculateButton extends StatelessWidget {
   }
 }
 
-// --- WIDGET RISULTATO AVANZATO ---
-// (Nessuna modifica necessaria qui)
 class _ResultCard extends StatelessWidget {
   const _ResultCard({super.key, required this.result});
 
@@ -408,7 +389,7 @@ class _ResultCard extends StatelessWidget {
 
     return Card(
       elevation: 4,
-      shadowColor: result.color.withOpacity(0.3),
+      shadowColor: result.color.withValues(alpha: 0.3),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
@@ -433,12 +414,12 @@ class _ResultCard extends StatelessWidget {
             ),
             Chip(
               label: Text(result.classification),
-              backgroundColor: result.color.withOpacity(0.1),
+              backgroundColor: result.color.withValues(alpha: 0.1),
               labelStyle: textTheme.titleMedium?.copyWith(
                 color: result.color,
                 fontWeight: FontWeight.w600,
               ),
-              side: BorderSide(color: result.color.withOpacity(0.5)),
+              side: BorderSide(color: result.color.withValues(alpha: 0.5)),
             ),
             const SizedBox(height: 24),
             _BmiMeter(bmiValue: result.value),
@@ -449,8 +430,6 @@ class _ResultCard extends StatelessWidget {
   }
 }
 
-// --- WIDGET: Indicatore Visivo Lineare (Meter) ---
-// (Nessuna modifica necessaria qui)
 class _BmiMeter extends StatelessWidget {
   final double bmiValue;
   final double minBmi = 15.0;
@@ -473,7 +452,7 @@ class _BmiMeter extends StatelessWidget {
             return Stack(
               clipBehavior: Clip.none,
               children: [
-                // 1. La barra colorata (Gradient)
+                // La barra colorata (Gradient)
                 Container(
                   height: 20,
                   decoration: BoxDecoration(
@@ -490,7 +469,7 @@ class _BmiMeter extends StatelessWidget {
                     ),
                   ),
                 ),
-                // 2. Il Cursore (Animato Implicitamente)
+                // Il Cursore
                 AnimatedPositioned(
                   duration: const Duration(milliseconds: 800),
                   curve: Curves.easeOutExpo,
@@ -518,7 +497,7 @@ class _BmiMeter extends StatelessWidget {
           },
         ),
         const SizedBox(height: 12),
-        // 3. Etichette della scala
+        // Etichette della scala
         const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -538,8 +517,6 @@ class _BmiMeter extends StatelessWidget {
   }
 }
 
-// --- WIDGET PLACEHOLDER ---
-// (Nessuna modifica necessaria qui)
 class _PlaceholderCard extends StatelessWidget {
   const _PlaceholderCard({super.key});
 
@@ -550,7 +527,7 @@ class _PlaceholderCard extends StatelessWidget {
       color: Theme.of(context)
           .colorScheme
           .surfaceContainerHighest
-          .withOpacity(0.3),
+          .withValues(alpha: 0.3),
       child: const Padding(
         padding: EdgeInsets.all(48.0),
         child: Text(
