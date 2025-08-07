@@ -14,10 +14,10 @@ class AppTheme {
       ),
       filled: true,
     ),
-    cardTheme: CardThemeData(
+    cardTheme: const CardThemeData(
       elevation: 0,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.all(Radius.circular(16)),
       ),
     ),
     segmentedButtonTheme: _segmentedButtonTheme(),
@@ -36,10 +36,10 @@ class AppTheme {
       ),
       filled: true,
     ),
-    cardTheme: CardThemeData(
+    cardTheme: const CardThemeData(
       elevation: 0,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.all(Radius.circular(16)),
       ),
     ),
     segmentedButtonTheme: _segmentedButtonTheme(),
@@ -48,7 +48,7 @@ class AppTheme {
   static SegmentedButtonThemeData _segmentedButtonTheme() {
     return SegmentedButtonThemeData(
       style: ButtonStyle(
-        textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
+        textStyle: WidgetStateProperty.resolveWith<TextStyle?>(
           (states) => const TextStyle(fontWeight: FontWeight.w500),
         ),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
