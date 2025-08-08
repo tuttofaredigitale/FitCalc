@@ -19,3 +19,4 @@ build/
 *.iml
 *.log
 *.log
+android/app/google-services.json
