@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fitcalc/core/models/bmi_result.dart';
 
 class BmiService {
-  // Formula classica del BMI: peso / altezza²
+  // Formula classica del BMI
   static BmiResult calculateClassicBmi(double weightKg, double heightCm) {
     if (heightCm <= 0) {
       return BmiResult(
@@ -14,7 +14,7 @@ class BmiService {
     return _getClassicBmiClassification(bmi);
   }
 
-  // "Nuovo" BMI (Trefethen - Oxford): 1.3 * peso / altezza^2.5
+  // "Nuovo" BMI (Trefethen-Oxford)
   static BmiResult calculateOxfordBmi(double weightKg, double heightCm) {
     if (heightCm <= 0) {
       return BmiResult(
@@ -26,7 +26,7 @@ class BmiService {
     return _getClassicBmiClassification(bmi);
   }
 
-  // Indice Ponderale: peso / altezza³
+  // Indice Ponderale
   static BmiResult calculatePonderalIndex(double weightKg, double heightCm) {
     if (heightCm <= 0) {
       return BmiResult(

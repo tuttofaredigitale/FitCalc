@@ -1,5 +1,5 @@
 name: fitcalc
-description: A simple BMI calculator app for a Flutter course.
+description: Una semplice app per il calcolo del BMI per un corso Flutter.
 publish_to: "none"
 
 version: 1.0.0+1
@@ -12,6 +12,9 @@ dependencies:
     sdk: flutter
   flutter_riverpod: ^2.4.9
   cupertino_icons: ^1.0.2
+  firebase_core: ^2.32.0
+  firebase_analytics: ^10.10.7
+  firebase_crashlytics: ^3.5.0
 
 dev_dependencies:
   flutter_test:

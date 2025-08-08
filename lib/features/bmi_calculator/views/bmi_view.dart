@@ -6,6 +6,7 @@ import 'package:fitcalc/features/bmi_calculator/providers/bmi_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 class BmiView extends ConsumerStatefulWidget {
   const BmiView({super.key});
@@ -23,6 +24,15 @@ class _BmiViewState extends ConsumerState<BmiView> {
 
   void _calculate() {
     HapticFeedback.mediumImpact();
+
+    FirebaseAnalytics.instance.logEvent(
+      name: 'bmi_calculated',
+      parameters: {
+        'formula_name': _selectedFormula.displayName,
+        'user_height': _currentHeight,
+        'user_weight': _currentWeight,
+      },
+    );
 
     ref.read(bmiProvider.notifier).calculateBmi(
           formula: _selectedFormula,
@@ -125,6 +135,12 @@ class _BmiViewState extends ConsumerState<BmiView> {
                   setState(() {
                     _selectedFormula = formula;
                   });
+                  FirebaseAnalytics.instance.logEvent(
+                    name: 'formula_changed',
+                    parameters: {
+                      'selected_formula': formula.displayName,
+                    },
+                  );
                 },
               ),
 
