@@ -5,7 +5,6 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('App starts and shows initial UI', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
     await tester.pumpWidget(const ProviderScope(child: MyApp()));
 
     // Verifichiamo che il nuovo titolo sia presente.

@@ -1,4 +1,3 @@
-// import 'dart:ui';
 import 'package:fitcalc/core/models/bmi_formula.dart';
 import 'package:fitcalc/core/models/bmi_result.dart';
 import 'package:fitcalc/core/models/gender.dart';
@@ -232,7 +231,7 @@ class _GenderCard extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Icona e Testo prendono il colore calcolato
+                // Icona e testo prendono il colore calcolato
                 Icon(gender.icon, size: 50, color: contentColor),
                 const SizedBox(height: 8),
                 Text(

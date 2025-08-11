@@ -1,8 +1,5 @@
-// lib/features/bmi_calculator/providers/bmi_provider.dart
-
 import 'package:fitcalc/core/models/bmi_formula.dart';
 import 'package:fitcalc/core/models/bmi_result.dart';
-// 1. IMPORTANTE: Aggiungi l'import per Gender (assicurati che il percorso sia corretto)
 import 'package:fitcalc/core/models/gender.dart';
 import 'package:fitcalc/features/bmi_calculator/services/bmi_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -27,21 +24,17 @@ class BmiState {
 class BmiNotifier extends StateNotifier<BmiState> {
   BmiNotifier() : super(BmiState());
 
-  // 2. AGGIORNAMENTO: Modifica la firma del metodo per includere Gender
+  // Modifica la firma del metodo per includere Gender
   Future<void> calculateBmi({
     required BmiFormula formula,
     required double weight,
     required double height,
-    required Gender gender, // Aggiunto qui
+    required Gender gender,
   }) async {
-    // --- Miglioramento UX: Gestione del caricamento ---
-
     // Invece di resettare subito il risultato (che causa un salto nella UI),
     // manteniamo il risultato precedente visibile e attiviamo solo il loading.
     // state.copyWith(isLoading: true, result: null) non funzionerebbe comunque a causa del '??' nel copyWith.
     state = state.copyWith(isLoading: true);
-
-    // --------------------------------------------------
 
     // Simuliamo un caricamento
     await Future.delayed(const Duration(milliseconds: 500));
